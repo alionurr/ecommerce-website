@@ -20,7 +20,10 @@ class ProductController extends Controller
 
     function products()
     {
-        $data = Product::all();
-        return view('products', ['products' => $data]);
+        // this data for nav-tab(most popular)
+        $data = Product::orderBy('amount', 'asc')->get();
+        // this data2 for nav-tab(price high to low)
+        $data2 = Product::orderBy('price', 'desc')->get();
+        return view('products', ['products' => $data , 'products2' => $data2]);
     }
 }
