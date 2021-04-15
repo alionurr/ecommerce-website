@@ -26,8 +26,8 @@
                             <ul id="navigation">
                                 <li><a href="/">Home</a></li>
                                 <li><a href="/products">shop</a></li>
-                                <li><a href="about.html">about</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="/about">about</a></li>
+                                <li><a href="/contact">Contact</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -35,17 +35,20 @@
                     <div class="header-right">
                         <ul>
                             <li>
-                                <div class="nav-search search-switch">
-                                    <span class="flaticon-search"></span>
-                                </div>
+                                <form action="/search_results">
+                                    <div class="nav-search">
+                                        <input type="search" name="search" placeholder="Search" style="border-bottom:black 1px solid; border-top: none; border-left: none; border-right: none">
+                                    </div>
+                                </form>
                             </li>
-                            <li><a href="cart.html"><span class="flaticon-shopping-cart"></span></a></li>
                             @if (Session::has('user'))
+                            <li><a href="cart.html"><span class="flaticon-shopping-cart"></span></a></li>
                                 <div class="dropdown">
                                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{Session::get('user')['name']}}
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Orders</a>
                                     <a class="dropdown-item" href="/logout">Logout</a>
                                     </div>
                                 </div>

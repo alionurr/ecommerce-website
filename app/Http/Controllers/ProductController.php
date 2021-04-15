@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Showcase;
+use Symfony\Component\Console\Input\Input;
 
 class ProductController extends Controller
 {
@@ -25,5 +26,21 @@ class ProductController extends Controller
         // this data2 for nav-tab(price high to low)
         $data2 = Product::orderBy('price', 'desc')->get();
         return view('products', ['products' => $data , 'products2' => $data2]);
+    }
+
+    function productDetails($id)
+    {
+        $data = Product::find($id);
+        //return $data;
+        return view('product_details', ['product' => $data]);
+    }
+
+    function search(Request $req)
+    {
+        $data = Product::
+        where('name', 'like', '%'.$req->input('search').'%')
+        ->get();
+
+        return view('search_results', ['products' => $data]);
     }
 }

@@ -66,7 +66,7 @@
                                     </div>
                                 </div>
                                 <div class="popular-caption">
-                                    <h3><a href="product_details.html">{{$item->name}}</a></h3>
+                                    <h3><a href="/product_details/{{$item->id}}">{{$item->name}}</a></h3>
                                     <span>{{$item->price}}</span>
                                 </div>
                             </div>
@@ -90,7 +90,7 @@
                                     </div>
                                 </div>
                                 <div class="popular-caption">
-                                    <h3><a href="product_details.html">{{$item->name}}</a></h3>
+                                    <h3><a href="/product_details/{{$item->id}}">{{$item->name}}</a></h3>
                                     <span>{{$item->price}}</span>
                                 </div>
                             </div>

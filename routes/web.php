@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Session;
 */
 
 
-Route::view('login', 'login');
-Route::post('login', [UserController::class, 'login']);
+Route::view('/login', 'login');
+Route::post('/login', [UserController::class, 'login']);
 
 Route::get('/logout', function () {
     Session::forget('user');
@@ -28,4 +28,9 @@ Route::get('/logout', function () {
 
 Route::get('/', [ProductController::class, 'index']);
 
-Route::get('products', [ProductController::class,'products']);
+Route::get('/products', [ProductController::class, 'products']);
+Route::view('/about', 'about');
+Route::view('/contact', 'contact');
+
+Route::get('/product_details/{id}', [ProductController::class, 'productDetails']);
+Route::get('/search_results', [ProductController::class, 'search']);
