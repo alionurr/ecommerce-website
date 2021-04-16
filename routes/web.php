@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Session;
 |
 */
 
+Route::get('/', [ProductController::class, 'index']);
 
 Route::view('/login', 'login');
 Route::post('/login', [UserController::class, 'login']);
@@ -25,8 +26,8 @@ Route::get('/logout', function () {
     return redirect('/');
 });
 
-
-Route::get('/', [ProductController::class, 'index']);
+Route::view('/register', 'register');
+Route::post('/register', [UserController::class, 'register']);
 
 Route::get('/products', [ProductController::class, 'products']);
 Route::view('/about', 'about');
