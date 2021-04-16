@@ -40,3 +40,4 @@ Route::get('/cart', [ProductController::class, 'cartList']);
 Route::get('/remove_item/{id}', [ProductController::class, 'removeItem']);
 Route::get('/ordernow', [ProductController::class, 'orderNow']);
 Route::post('/orderinfo', [ProductController::class, 'orderInfo']);
+Route::get('/myorders', [ProductController::class, 'myOrders']);

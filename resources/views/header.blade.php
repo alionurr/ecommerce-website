@@ -48,7 +48,7 @@
                                     {{Session::get('user')['name']}}
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">Orders</a>
+                                    <a class="dropdown-item" href="/myorders">Orders</a>
                                     <a class="dropdown-item" href="/logout">Logout</a>
                                     </div>
                                 </div>
