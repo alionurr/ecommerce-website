@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Showcase;
 use App\Models\Cart;
+use App\Models\Order;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\Console\Input\Input;
@@ -85,5 +86,33 @@ class ProductController extends Controller
     {
         Cart::destroy($id);
         return redirect('/cart');
+    }
+
+    function orderNow()
+    {
+        $userId = Session::get('user')['id'];
+        $totalPrice = DB::table('cart')
+        ->join('products', 'cart.product_id', '=', 'products.id')
+        ->where('cart.user_id', $userId)
+        ->sum('products.price');
+
+        return view('ordernow', ['total' => $totalPrice]);
+    }
+
+    function orderInfo(Request $req)
+    {
+        $userId = Session::get('user')['id'];
+        $allCart = Cart::where('user_id', $userId)->get();
+
+        foreach ($allCart as $cart) {
+            $order = new Order;
+            $order->user_id = $cart->user_id;
+            $order->product_id = $cart->product_id;
+            $order->payment_method = $req->payment;
+            $order->address = $req->address;
+            $order->save();
+        }
+        Cart::where('user_id', $userId)->delete();
+        return redirect('/');
     }
 }

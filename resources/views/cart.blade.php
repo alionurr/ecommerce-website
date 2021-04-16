@@ -27,7 +27,7 @@
                     </div>
                     <div class="col-sm-3"><span class="float-right">Total : ${{$total}}</span></div>
                     <div class="col-sm-3 offset-sm-3">
-                        <a href="#" class="btn_1 float-right">Order Now</a>
+                        <a href="/ordernow" class="btn_1 float-right">Order Now</a>
                     </div>
                 </div>
               <thead>
@@ -78,7 +78,7 @@
             </div>
             <div class="col-sm-3"><span class="float-right">Total : ${{$total}}</span></div>
             <div class="col-sm-3 offset-sm-3">
-                <a href="#" class="btn_1 float-right">Order Now</a>
+                <a href="/ordernow" class="btn_1 float-right">Order Now</a>
             </div>
         </div>
           </div>
