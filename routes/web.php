@@ -34,3 +34,7 @@ Route::view('/contact', 'contact');
 
 Route::get('/product_details/{id}', [ProductController::class, 'productDetails']);
 Route::get('/search_results', [ProductController::class, 'search']);
+
+Route::post('/add_to_cart', [ProductController::class, 'addToCart']);
+Route::get('/cart', [ProductController::class, 'cartList']);
+Route::get('/remove_item/{id}', [ProductController::class, 'removeItem']);

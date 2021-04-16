@@ -107,7 +107,11 @@
                         <div class="popular-img">
                             <img src="{{$item->image}}" alt="">
                             <div class="img-cap">
-                                <span>Add to cart</span>
+                                <form action="/add_to_cart" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{$item->id}}">
+                                    <button id="custom-button">Add to cart</button>
+                                </form>
                             </div>
                             <div class="favorit-items">
                                 <span class="flaticon-heart"></span>
@@ -115,7 +119,7 @@
                         </div>
                         <div class="popular-caption">
                             <h3><a href="/product_details/{{$item->id}}">{{$item->name}}</a></h3>
-                            <span>{{$item->price}}</span>
+                            <span>${{$item->price}}</span>
                         </div>
                     </div>
                 </div>

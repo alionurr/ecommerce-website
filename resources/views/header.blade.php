@@ -42,7 +42,7 @@
                                 </form>
                             </li>
                             @if (Session::has('user'))
-                            <li><a href="cart.html"><span class="flaticon-shopping-cart"></span></a></li>
+                            <li><a href="/cart"><span class="flaticon-shopping-cart"></span></a></li>
                                 <div class="dropdown">
                                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{Session::get('user')['name']}}

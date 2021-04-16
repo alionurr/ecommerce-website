@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Showcase;
+use App\Models\Cart;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\Console\Input\Input;
 
 class ProductController extends Controller
@@ -42,5 +45,45 @@ class ProductController extends Controller
         ->get();
 
         return view('search_results', ['products' => $data]);
+    }
+
+    function addToCart(Request $req)
+    {
+        if($req->session()->has('user'))
+        {
+            $cart = new Cart;
+            $cart->user_id = $req->session()->get('user')['id'];
+            $cart->product_id = $req->product_id;
+            $cart->save();
+
+            return redirect('/');
+        }
+        else
+        {
+            return redirect('/login');
+        }
+    }
+
+    function cartList()
+    {
+        $userId = Session::get('user')['id'];
+        $products = DB::table('cart')
+        ->join('products', 'cart.product_id', '=', 'products.id')
+        ->where('cart.user_id', $userId)
+        ->select('products.*', 'cart.id as cart_id')
+        ->get();
+
+        $totalPrice = DB::table('cart')
+        ->join('products', 'cart.product_id', '=', 'products.id')
+        ->where('cart.user_id', $userId)
+        ->sum('products.price');
+
+        return view('cart', ['products' => $products , 'total' => $totalPrice]);
+    }
+
+    function removeItem($id)
+    {
+        Cart::destroy($id);
+        return redirect('/cart');
     }
 }

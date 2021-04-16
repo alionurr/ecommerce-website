@@ -17,6 +17,14 @@ hr{
     height: 1px;
 }
 
+#custom-button{
+    width:100%;
+    height:50px;
+    border:none;
+    background-color:#FF2020;
+    cursor: pointer;
+}
+
 
 .fa,
 .fas,
